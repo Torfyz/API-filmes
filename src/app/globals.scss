@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+::-webkit-scrollbar {
+    display: none;
+  }
+
+body{
+    background-color: #101011;
+    scrollbar-width: none;
+}

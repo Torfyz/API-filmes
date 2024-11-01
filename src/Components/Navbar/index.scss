@@ -1,0 +1,46 @@
+.navbar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background-color: #1d1f22;
+    text-align: center;
+    .page-title{
+        color: #fff;
+    }
+    .SearchBar{
+        display: flex;
+        flex-direction: row;
+        gap: 0px;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 2px;
+        }
+        input{
+            width: 220px;
+            height: 20px;
+        }
+    }
+    .button-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: #333;
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s;
+      
+        &:hover {
+          color: #007bff;
+        }
+      }
+      
+      .SearchBar {
+        display: flex;
+        align-items: center;
+      }
+      
+      
