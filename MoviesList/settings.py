@@ -17,7 +17,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['.render.com','127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.render.com','127.0.0.1', 'localhost','api-filmes-fnqy.onrender.com']
 
 
 # Application definition
