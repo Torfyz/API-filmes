@@ -1,12 +1,13 @@
-"use client";
+"use client"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Movie } from "@/Types/movie";
 import MovieCard from "../MovieCard";
 import "./index.scss";
 import Navbar from "../Navbar/index";
+import { FaSpinner } from "react-icons/fa";
 
-const MOVIES_PER_PAGE = 4; // Número de filmes por página
+const MOVIES_PER_PAGE = 4;
 
 export default function MovieList() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -14,58 +15,66 @@ export default function MovieList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [message, setMessage] = useState<string>("");
-  const [hasSearched, setHasSearched] = useState<boolean>(false); // Estado para controlar a tentativa de pesquisa
+  const [hasSearched, setHasSearched] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getMovies();
   }, []);
 
   const getMovies = () => {
+    setLoading(true); 
     axios({
       method: "get",
       url: "https://api-filmes-fnqy.onrender.com/ListFilmes/api/filme/",
-    }).then((response) => {
-      setMovies(response.data);
-      setTotalPages(Math.ceil(response.data.length / MOVIES_PER_PAGE));
-      setCurrentPage(1);
     })
-    .catch((error) => {
-      console.error("Erro ao buscar filmes:", error);
-    });
+      .then((response) => {
+        setMovies(response.data);
+        setTotalPages(Math.ceil(response.data.length / MOVIES_PER_PAGE));
+        setCurrentPage(1);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar filmes:", error);
+      })
+      .finally(() => {
+        setLoading(false); 
+      });
   };
 
-  // Filtra os filmes com base no termo de pesquisa
-  const filteredMovies = movies.filter(movie =>
+  const filteredMovies = movies.filter((movie) =>
     movie.titulo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Atualiza a mensagem conforme a pesquisa
+
   useEffect(() => {
     if (hasSearched) {
       if (searchTerm === "") {
         setMessage("Digite no campo de pesquisa para prosseguir");
-        setTimeout(() => setMessage(""), 3000); // Mensagem desaparece após 3 segundos
+        setTimeout(() => setMessage(""), 3000); 
       } else if (filteredMovies.length === 0) {
         setMessage("Nenhum resultado encontrado");
-        setTimeout(() => setMessage(""), 3000); // Mensagem desaparece após 3 segundos
+        setTimeout(() => setMessage(""), 3000);
       } else {
-        setMessage(""); // Limpa a mensagem se houver resultados
+        setMessage("");
       }
     }
-    
+
     setTotalPages(Math.ceil(filteredMovies.length / MOVIES_PER_PAGE));
-    setCurrentPage(1); // Resetar para a primeira página ao mudar o filtro
+    setCurrentPage(1); 
   }, [searchTerm, movies, filteredMovies.length, hasSearched]);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
-    setHasSearched(true); // Marca que o usuário tentou pesquisar
+    setHasSearched(true); 
   };
 
-  // Lógica de paginação
+  
   const indexOfLastMovie = currentPage * MOVIES_PER_PAGE;
   const indexOfFirstMovie = indexOfLastMovie - MOVIES_PER_PAGE;
-  const currentMovies = filteredMovies.slice(indexOfFirstMovie, indexOfLastMovie);
+  const currentMovies = filteredMovies.slice(
+    indexOfFirstMovie,
+    indexOfLastMovie
+  );
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -83,15 +92,27 @@ export default function MovieList() {
     <>
       <Navbar setSearchTerm={handleSearch} />
       <ul className="movie-list">
-        {currentMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        {loading ? (
+          <div className="loading">
+            <FaSpinner className="spinner" /> Carregando filmes...
+          </div>
+        ) : (
+          currentMovies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} loading={loading} /> 
+          ))
+        )}
       </ul>
       {message && <div className="message">{message}</div>}
       <div className="pagination">
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>Anterior</button>
-        <span>Página {currentPage} de {totalPages}</span>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>Próximo</button>
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          Anterior
+        </button>
+        <span>
+          Página {currentPage} de {totalPages}
+        </span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Próximo
+        </button>
       </div>
     </>
   );

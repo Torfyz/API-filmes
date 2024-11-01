@@ -57,35 +57,56 @@
 }
 
 .movie-list-container {
-    display: flex;              /* Usar flexbox para alinhar os items */
-    justify-content: center;    /* Centraliza o conteúdo horizontalmente */
-    align-items: center;        /* Centraliza o conteúdo verticalmente */
-    padding: 20px;             /* Adiciona um espaçamento ao redor */
+    display: flex;              
+    justify-content: center;   
+    align-items: center;       
+    padding: 20px;             
   }
   
   .movie-list {
-    display: flex;              /* Usar flexbox para alinhar os cards */
-    flex-wrap: wrap;           /* Permitir que os cards quebrem a linha */
-    justify-content: center;    /* Centraliza os cards horizontalmente */
-    margin: 0;                 /* Remove margens padrão */
-    padding: 0;                /* Remove preenchimento padrão */
-    list-style-type: none;     /* Remove o estilo de lista padrão */
+    display: flex;              
+    flex-wrap: wrap;           
+    justify-content: center;    
+    margin: 0;                 
+    padding: 0;                
+    list-style-type: none;     
   }
   
   .single-movie {
-    justify-content: center;    /* Centraliza o card quando há apenas um */
+    justify-content: center;    
   }
   
   .movie-card {
-    flex: 0 1 200px;           /* Define a largura mínima e flexível do card */
-    max-width: 300px;          /* Define o tamanho máximo do card */
-    margin: 10px;              /* Espaçamento entre os cards */
-    transition: transform 0.3s ease; /* Suaviza a animação ao redimensionar */
+    flex: 0 1 200px;           
+    max-width: 300px;          
+    margin: 10px;              
+    transition: transform 0.3s ease; 
   }
   
   .single-movie .movie-card {
-    max-width: 200px;          /* Tamanho reduzido para o card quando há apenas um filme */
-    transform: scale(0.9);     /* Leve redução de tamanho */
+    max-width: 200px;          
+    transform: scale(0.9);     
   }
+  
+  .loading {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    justify-content: center;
+    height: 100%; 
+    color: whitesmoke;
+    margin: 20px;
+  }
+  
+  .spinner {
+    animation: spin 1s linear infinite; 
+    background-color: whitesmoke;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
   
   
