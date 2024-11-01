@@ -17,7 +17,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['.render.com']
+ALLOWED_HOSTS = ['.render.com','127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -70,12 +70,34 @@ WSGI_APPLICATION = 'MoviesList.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'movies_vca5',
+        'USER': 'movies_vca5_user',
+        'PASSWORD': 'fBLHJluJ2dhClRyRpRavE8TRYGgggUq1',
+        'HOST': 'dpg-csid78ggph6c738gd2l0-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
+
+
+
+
+"""DB_NAME=Movies
+DB_USER=movies_vca5_user
+DB_PASSWORD=fBLHJluJ2dhClRyRpRavE8TRYGgggUq1
+DB_HOST=dpg-csid78ggph6c738gd2l0-a
+DB_PORT=5432
+
+DB_NAME="movies_vca5"
+DB_USER="movies_vca5_user"
+DB_PASSWORD="fBLHJluJ2dhClRyRpRavE8TRYGgggUq1"
+DB_HOST="dpg-csid78ggph6c738gd2l0-a"
+DB_PORT="5432"
+"""
+
 
 
 # Password validation
