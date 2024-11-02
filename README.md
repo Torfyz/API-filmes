@@ -12,7 +12,7 @@ O projeto consiste em um software dividido entre frontend e backend, que impleme
 
 # Links Úteis
 - **API no servidor da Render:** [https://api-filmes-fnqy.onrender.com](https://api-filmes-fnqy.onrender.com)
-- **Frontend conectado com a API no Vercel:** [https://api-filmes-pv74sgjlu-torfyzs-projects.vercel.app/](https://api-filmes-pv74sgjlu-torfyzs-projects.vercel.app/)
+- **Frontend conectado com a API no Vercel:** [https://api-filmes-ten.vercel.app/](https://api-filmes-ten.vercel.app/)
 
 # Configuração do Ambiente
 Para utilizar o projeto localmente, siga os passos abaixo:
