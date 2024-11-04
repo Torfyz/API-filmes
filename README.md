@@ -15,6 +15,7 @@ O projeto consiste em um software dividido entre frontend e backend, que impleme
 - **Frontend conectado com a API no Vercel:** [https://api-filmes-ten.vercel.app/](https://api-filmes-ten.vercel.app/)
 ## Observação
 - **Como a aplicação possui um banco de dados alimentado por uma API externa talvez quando abra pela primeira vez demore um pouco pois não consegui deixar tudo muito otimizado**
+- **E aparentemente a API sofre atualizações constantemente influenciando no número de páginas da aplicação, inicialmente havia 5 páginas de 4 filmes**
 
 # Configuração do Ambiente
 Para utilizar o projeto localmente, siga os passos abaixo:
