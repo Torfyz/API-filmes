@@ -1,3 +1,4 @@
+- **se está vendo depois de 1° de dezembro de 2024 provavelmente o backend não está funcionando**
 # Introdução
 O projeto consiste em um software dividido entre frontend e backend, que implementa um sistema dinâmico de apresentação de dados de filmes. Os dados são obtidos de uma API externa, processados e armazenados em um banco de dados online, e, por fim, apresentados em uma interface online onde são devidamente trabalhados.
 
